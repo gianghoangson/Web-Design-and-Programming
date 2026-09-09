@@ -7,7 +7,7 @@ Thư mục này là bộ instruction để Codex triển khai **Vietnamese Stock
 ## Thứ tự đọc bắt buộc
 
 1. Đọc **`CODEX.md` trước tiên**. Đây là global contract và có độ ưu tiên cao nhất trong bộ spec.
-2. Sau đó xử lý **một file một lần**, đúng thứ tự:
+2. Đọc các card theo thứ tự dưới đây để hiểu yêu cầu; đây là **thứ tự đọc, không phải thứ tự hoàn tất implementation**:
    1. `01-the-1.md`
    2. `02-ui-ux-section-1.md`
    3. `03-the-3.md`
@@ -16,7 +16,7 @@ Thư mục này là bộ instruction để Codex triển khai **Vietnamese Stock
    6. `06-the-6.md`
    7. `07-the-7.md`
    8. `08-the-8.md`
-3. Sau mỗi card: chạy test/lint/typecheck liên quan, sửa lỗi trước khi chuyển card tiếp theo.
+3. Triển khai theo dependency/phase trong `07-the-7.md`; mỗi phase tham chiếu các card liên quan, đặc biệt contracts ở 04/05/08 trước khi tạo fixtures/UI. Sau mỗi phase chạy test/lint/typecheck liên quan và sửa lỗi trước khi chuyển phase. Không đánh dấu cả card complete khi mới xong một phần.
 4. Không tự mở rộng scope sang P1/P2 chỉ vì thấy kiến trúc có chỗ để mở rộng.
 
 ## Mapping 8 tab nguồn → 8 file
@@ -55,6 +55,9 @@ Các reconciliation đã chốt:
 - NORMAL account trong P0 **không gửi lệnh tiền thật**; `BrokerExecutor` chỉ là interface/stub trả `BROKER_NOT_CONNECTED`.
 
 ## Working protocol cho Codex
+
+Hướng dẫn giao việc từng phase: `../../docs/luna-implementation-guide.md`.
+Các điểm làm rõ từ lần rà soát đầu: `../../docs/spec-review.md`.
 
 Trước khi sửa code ở mỗi card:
 

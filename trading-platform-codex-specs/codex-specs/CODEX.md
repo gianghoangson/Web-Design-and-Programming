@@ -4,6 +4,10 @@
 
 File này là contract toàn project. Mọi implementation phải tuân thủ. Nếu một card chi tiết mâu thuẫn với file này, **file này thắng** trừ khi human owner sửa trực tiếp quyết định.
 
+### Làm rõ implementation ngày 2026-09-09
+
+Theo yêu cầu rà soát/sửa spec trước khi build, áp dụng các quyết định trong `../../docs/spec-review.md` cho những điểm trước đây chưa chốt hoặc có ví dụ mâu thuẫn: decimal-string DTO, reservation invariants, freshness, giới hạn continuous-session P0, idempotency/locking, reset giữ audit, account/watchlist bootstrap và NORMAL stub. Các quyết định này làm rõ phần tương ứng bên dưới và ở các card; không đổi stack/phạm vi P0. Thứ tự implementation theo phase của card 07, không theo thứ tự đọc card.
+
 ## 2. Product boundary
 
 Xây một **Vietnamese Stock Trading Platform** theo hướng FireAnt-inspired, tập trung:
