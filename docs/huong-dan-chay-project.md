@@ -2,9 +2,11 @@
 
 ## Bản hiện tại làm được gì?
 
-Phase 0 dựng nền móng React/TypeScript/Vite, Express/TypeScript và kết nối PostgreSQL qua Prisma. Trang tiếng Việt kiểm tra trạng thái backend, hiển thị lỗi và cho thử lại.
+Phase 0 dựng nền móng React/TypeScript/Vite, Express/TypeScript và kết nối PostgreSQL qua Prisma. Phase 1 đã thêm giao diện workspace chứng khoán Việt Nam responsive: top navigation, chỉ số mẫu, tóm tắt tài khoản, bảng thị trường, danh mục, trạng thái backend và chuyển đổi trình bày giữa tài khoản chính/giả lập. Phase 1.1 dùng chung một giao diện cho hai route ngôn ngữ: `/vi/overview` và `/en/overview`.
 
-Chưa có đăng nhập, bảng giá, chart, tài khoản 100 triệu, BUY/SELL hoặc giao dịch thật. Các chức năng này thuộc những phase tiếp theo.
+Toàn bộ số liệu hiện tại là demo và có nhãn `DỮ LIỆU MẪU`. Chưa có đăng nhập, API bảng giá, chart, lưu tài khoản 100 triệu, BUY/SELL hoặc giao dịch thật. Các chức năng này thuộc những phase tiếp theo.
+
+VNINDEX, HNXINDEX và UPCOMINDEX là mức chỉ số theo điểm, ví dụ `1.827,12 điểm`; không phải giá trị VND. Giá cổ phiếu, giá trị giao dịch và số dư tài khoản vẫn dùng VND.
 
 ## Mở đúng thư mục và runtime
 
@@ -50,7 +52,7 @@ npm run dev
 
 Docker Compose cần được cài và daemon đang chạy. Có thể dùng PostgreSQL tự quản lý nếu `DATABASE_URL` trỏ đúng DB đó. `.env` chứa cấu hình local, không đưa lên Git.
 
-Mở `http://localhost:5173` để xem trang đầu. Backend mặc định ở `http://localhost:3001`.
+Mở `http://localhost:5173/vi/overview` cho tiếng Việt hoặc `http://localhost:5173/en/overview` cho tiếng Anh. Route gốc `http://localhost:5173/` tự chuyển sang tiếng Việt. Backend mặc định ở `http://localhost:3001`. Account selector hiện chỉ đổi cách trình bày NORMAL/SIMULATION ở frontend; nó chưa tải tài khoản từ database.
 
 ## Kiểm tra nhanh
 
@@ -84,15 +86,8 @@ npm run build
 - Nếu cổng đã dùng, dừng đúng tiến trình của project hoặc đổi cấu hình theo README; không kill tiến trình không rõ nguồn.
 - Nếu readiness 503, kiểm tra DB đang chạy, credentials, port và `DATABASE_URL`.
 
-## Cách tiếp tục làm việc với agent
+## Tài liệu và trạng thái
 
-Astra lập kế hoạch/giao việc → Luna medium triển khai → Terra medium review/debug → Luna kiểm thử lại. Mỗi phase có gate và báo cáo; không đánh dấu toàn bộ P0 hoàn tất chỉ vì trang chạy.
+Tài liệu sản phẩm nằm trong `trading-platform-codex-specs/codex-specs/`. Phase 1.1 đã đạt gate với 25/25 test, build/preview và browser smoke cho cả hai ngôn ngữ ở 1440×900, 768×1024, 390×844.
 
-Tài liệu cần đọc:
-
-- [Hướng dẫn giao việc cho Luna](luna-implementation-guide.md).
-- [Những điểm spec đã làm rõ](spec-review.md).
-- [Báo cáo triển khai Phase 0](phase-0-implementation.md).
-- [Review và các lỗi Terra đã sửa](phase-0-review.md).
-
-Bước kế tiếp sau khi Phase 0 đạt gate là Phase 1: dùng Superdesign xây một hướng giao diện dark, top navigation, nhãn tiếng Việt và bảng dữ liệu theo card 02. Ponytail giúp chỉ thêm component/dependency khi phase thực sự cần. Superdesign đã đăng nhập; Phase 0 chỉ chuẩn bị context local, chưa tạo canvas/draft.
+Bước tiếp theo là Phase 1.2: chuyển frontend hiện tại từ React/TSX sang multi-page HTML/CSS/JavaScript, mỗi trang có `index.html`, `styles.css`, `app.js`. Phase 2 chỉ bắt đầu sau khi hai trang overview đạt parity và gate mới.

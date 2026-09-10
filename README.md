@@ -53,4 +53,4 @@ Dừng app bằng `Ctrl+C`; script root sẽ gửi SIGTERM cho cả hai process 
 
 ## Giới hạn Phase 0
 
-Schema Prisma chỉ có model probe để kiểm tra connectivity. Không có auth, market data, portfolio, order, trading, broker hay dashboard giả. Xem [docs/phase-0-implementation.md](docs/phase-0-implementation.md) để biết gate và blocker runtime hiện tại.
+Schema Prisma chỉ có model probe để kiểm tra connectivity. Không có auth, market data, portfolio, order, trading, broker hay dashboard giả. Xem [hướng dẫn chạy project](docs/huong-dan-chay-project.md) để biết cách khởi động và phạm vi hiện tại.

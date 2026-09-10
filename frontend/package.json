@@ -13,7 +13,8 @@
   "dependencies": {
     "@vitejs/plugin-react": "5.0.4",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "react-router-dom": "^7.9.5"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "6.6.3",
